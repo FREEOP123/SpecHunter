@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend, Tooltip as RechartsTooltip } from 'recharts';
 import { Calculator, Cpu, Battery, Weight, X, Plus, Trash2, Smartphone, Laptop, Eye, Monitor, HardDrive, Zap, Search, Sparkles, Loader2, Globe, Moon, Sun } from 'lucide-react';
 
-// --- INITIAL DATA ---
+// --- 1. ส่วนข้อมูลสินค้า (DATA) ---
 const INITIAL_PRODUCTS = [
   {
     id: 1,
@@ -69,7 +69,7 @@ const INITIAL_PRODUCTS = [
   }
 ];
 
-// --- UTILS ---
+// --- 2. ฟังก์ชันช่วยเหลือ (UTILS) ---
 const getCategoryTextColor = (category) => {
   const cat = category.toLowerCase();
   if (cat.includes("gaming")) return "text-purple-600 dark:text-purple-400";
@@ -103,7 +103,8 @@ const getCategoryBgColor = (category, isDark) => {
   return "bg-gray-100";
 };
 
-const App = () => {
+// --- 3. ส่วนประกอบหลัก (MAIN COMPONENT) ---
+function App() {
   const [compareList, setCompareList] = useState([]);
   const [viewProduct, setViewProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -111,12 +112,11 @@ const App = () => {
   const [aiProducts, setAiProducts] = useState([]); 
   const [isAiLoading, setIsAiLoading] = useState(false);
   
-  // THEME STATE
+  // Theme State
   const [isDarkMode, setIsDarkMode] = useState(false);
-  
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
-  // --- LOGIC ---
+  // Logic การค้นหาและคำนวณคะแนน
   const handleAiSearch = () => {
     setIsAiLoading(true);
     setTimeout(() => {
@@ -187,7 +187,7 @@ const App = () => {
     return dataPoint;
   });
 
-  // --- THEME CLASSES HELPERS ---
+  // Theme Classes Helpers
   const theme = {
     bg: isDarkMode ? 'bg-slate-950' : 'bg-gray-50',
     text: isDarkMode ? 'text-gray-100' : 'text-gray-800',
@@ -491,6 +491,6 @@ const App = () => {
       )}
     </div>
   );
-};
+}
 
 export default App;
