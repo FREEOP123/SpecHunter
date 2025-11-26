@@ -5,13 +5,3 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 })
-
-
-    ```bash
-    npm run build
-    ```
-
-    ```bash
-    git add .
-    git commit -m "Add vite config"
-    git push origin main
